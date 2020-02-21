@@ -7,11 +7,15 @@
 
 <h1 th:text="${title}">Default Title</h1>
 
+<a href="/blog">Add A Post</a>
+<a href="/category">Add A Category</a>
+<a href="/author">Add An author</a>
+
 
 <form method="post">
 
-    <input type="text" name="tagsName"/>
-    <input type="text" name="tagsPost"/>
+    <input type="text" name="tagsName" placeholder="name"/>
+    <input type="text" name="tagsPost" placeholder="post"/>
     <input type="submit" value="Add A Tag"/>
 
 </form>
