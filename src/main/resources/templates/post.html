@@ -10,27 +10,66 @@
 <h1 th:text="${title}">Default Title </h1>
 
 
-<a href="">Add A Post</a>
+<a href="/category">Add A Category</a>
+<a href="/tags">Add A tag</a>
+<a href="/author">Add An author</a> <br>
 
-<table class="table">
-    <tr>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Body</th>
-        <th>Category</th>
-        <th>Tags</th>
-    </tr>
 
-    <tr th:each="post : ${posts}">
-        <td th:text="${post.title}"></td>
-        <td th:text="${post.body}"></td>
-        <td th:text="${post.author}"></td>
-        <td th:text="${post.category}"></td>
-        <td th:text="${post.tag}"></td>
+<label for="author">
+    <select id="author">
+        <option>Author1</option>
+        <option>Author2</option>
+        <option>Author3</option>
+    </select>
+</label>
 
-    </tr>
 
-</table>
+<label for="categories">
+    <select id="categories">
+        <option>category1</option>
+        <option>category2</option>
+        <option>category3</option>
+    </select>
+</label>
+
+<label for="tags">
+    <select id="tags">
+        <option>tag1</option>
+        <option>tag2</option>
+        <option>tag3</option>
+    </select>
+</label>
+
+
+<!--<table class="table">-->
+<!--    <tr>-->
+<!--        <th>Title</th>-->
+<!--        <th>Author</th>-->
+<!--        <th>Body</th>-->
+<!--        <th>Category</th>-->
+<!--        <th>Tags</th>-->
+<!--    </tr>-->
+
+<!--    <tr th:each="post : ${posts}">-->
+<!--        <td th:text="${post.title}"></td>-->
+<!--        <td th:text="${post.body}"></td>-->
+<!--        <td th:text="${post.author}"></td>-->
+<!--        <td th:text="${post.category}"></td>-->
+<!--        <td th:text="${post.tag}"></td>-->
+
+<!--    </tr>-->
+
+<!--</table>-->
+
+<form method="post">
+
+    <input type="text" name="postTitle" placeholder="Post Title"/>
+    <input type="text" name="postBody" placeholder="Start Here"/>
+    <input type="date" name="publishedDate"/>
+
+    <input type="submit" value="Add A Post!"/>
+
+</form>
 
 
 </body>
