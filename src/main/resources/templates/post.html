@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns: th="//www.thymeleaf.org/"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+
+</head>
+
+<body>
+<h1 th:text="${title}">Default Title </h1>
+
+
+<a href="">Add A Post</a>
+
+<table class="table">
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Body</th>
+        <th>Category</th>
+        <th>Tags</th>
+    </tr>
+
+    <tr th:each="post : ${posts}">
+        <td th:text="${post.title}"></td>
+        <td th:text="${post.body}"></td>
+        <td th:text="${post.author}"></td>
+        <td th:text="${post.category}"></td>
+        <td th:text="${post.tag}"></td>
+
+    </tr>
+
+</table>
+
+
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns: th="//www.thymeleaf.org/"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head></head>
+
+<body>
+
+<h1 th:text="${title}">Default Title</h1>
+
+<label for="categories">
+    <select id="categories">
+        <option>category1</option>
+        <option>category2</option>
+        <option>category3</option>
+    </select>
+</label>
+
+<form method="post">
+
+    <input type="text" name="categoryName"/>
+    <input type="text" name="categoryPost"/>
+    <input type="submit" value="Add A Category"/>
+
+</form>
+
+
+</body>
+
+</html>
