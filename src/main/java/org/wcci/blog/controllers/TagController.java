@@ -6,31 +6,34 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.wcci.blog.models.Tags;
+import org.wcci.blog.models.Tag;
+import org.wcci.blog.storages.TagStorage;
 
 @Controller
 @RequestMapping("tags")
-public class TagsController {
+public class TagController {
 
-    public TagsController() {
+    private TagStorage tagStorage;
 
+    public TagController(TagStorage tagStorage) {
+        this.tagStorage = tagStorage;
     }
 
     @RequestMapping
     public String displayTags(Model model) {
-        model.addAttribute("tags", "tag");
+        model.addAttribute("tags", tagStorage.getAll());
         return "tags";
     }
 
-    @GetMapping("")
+    @GetMapping("add")
     public String addTagForm(Model model) {
-        model.addAttribute("title", "Add a tag");
+        model.addAttribute("Tags", "Add a tag");
         return "tags";
     }
 
     @PostMapping("submit")
-    public String processAddTagForm(@RequestParam("tagName") String tagName, @RequestParam("tagPost") String tagPost) {
-        new Tags(tagName, tagPost);
+    public String processAddTagForm(@RequestParam("tagName") String tagName) {
+        tagStorage.store(new Tag(tagName));
         return "redirect:";
     }
 }

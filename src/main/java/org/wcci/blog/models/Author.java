@@ -1,21 +1,32 @@
 package org.wcci.blog.models;
 
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.Collection;
+
+@Entity
 public class Author {
 
-
+    @Id
+    @GeneratedValue
     private String name;
-    private String post;
+    @OneToMany(mappedBy = "authors")
+    private Collection<Post> posts;
+    private Long id;
 
-    public Author(String name, String post) {
+    public Author(String name) {
         this.name = name;
-        this.post = post;
+    }
+
+    public Author() {
+
     }
 
     public String getName() {
         return name;
     }
 
-    public String getPost() {
-        return post;
-    }
 }

@@ -1,21 +1,32 @@
 package org.wcci.blog.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.Collection;
+
+@Entity
 public class Category {
 
-
+    @Id
+    @GeneratedValue
     private String name;
-    private String post;
+    @OneToMany(mappedBy = "category")
+    private Collection<Post> posts;
 
-    public Category(String name, String post) {
+
+    public Category() {
+
+    }
+
+    public Category(String name) {
         this.name = name;
-        this.post = post;
+
     }
 
     public String getName() {
         return name;
     }
 
-    public String getPost() {
-        return post;
-    }
 }

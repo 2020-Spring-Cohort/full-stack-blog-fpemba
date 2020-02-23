@@ -6,28 +6,36 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.wcci.blog.models.Posts;
+import org.wcci.blog.models.Post;
+import org.wcci.blog.storages.PostStorage;
 
 @Controller
 @RequestMapping("blog")
 public class PostController {
 
+    private PostStorage postStorage;
+
+    public PostController(PostStorage storage) {
+        this.postStorage = storage;
+    }
+
     @GetMapping
     public String displayBlogPosts(Model model) {
-        model.addAttribute("reviews", "add a post");
+        model.addAttribute("posts", postStorage.getAll());
         return "post";
     }
 
     @GetMapping("add")
     public String addPostForm(Model model) {
-        model.addAttribute("title", "Add a Post");
+        model.addAttribute("Post", "Add a Post");
         return "post";
     }
 
     @PostMapping("add")
-    public String processAddReviewForm(@RequestParam("postTitle") String postTitle, @RequestParam("postAuthor") String postAuthor, @RequestParam("publishedDate") int publishedDate, @RequestParam("postBody") String postBody, @RequestParam("postCategory") String postCategory, @RequestParam("postTag") String postTag) {
-        new Posts(postTitle, postAuthor, postBody, publishedDate, postCategory, postTag);
+    public String processAddReviewForm(@RequestParam("postTitle") String postTitle, @RequestParam("publishedDate") String publishedDate, @RequestParam("postBody") String postBody) {
+        postStorage.store(new Post(postTitle, publishedDate, postBody));
         return "redirect:";
     }
+
 }
 
