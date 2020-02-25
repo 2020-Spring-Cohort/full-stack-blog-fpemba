@@ -11,11 +11,7 @@ public interface PostStorage {
 
     void store(Post post);
 
-    Post findPostByTitle(String title);
-
-    Post findPostByPublishedDate(String publishedDate);
-
-    Post findPostByBody(String body);
+    Post findPostById(long id);
 
 }
 

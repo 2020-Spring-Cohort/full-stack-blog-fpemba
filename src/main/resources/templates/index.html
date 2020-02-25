@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns: th="//www.thymeleaf.org/"
+<html lang="en" xmlns: th="http://www.thymeleaf.org/"
       xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
@@ -7,16 +7,16 @@
 </head>
 
 <body>
-<h1 th:text="${title}">Default Title </h1>
-
+<h1 th:text="${title}">Welcome</h1>
 
 
 <h2>WELCOME</h2>
 
-<a href="/blog">Add A Post</a> <br>
-<a href="/category">Add A Category</a> <br>
-<a href="/tags">Add A tag</a> <br>
-<a href="/author">Add An author</a> <br>
+
+<a href="/author/all-authors">Add Authors</a> <br>
+<a href="/category/all-categories">Add Categories</a> <br>
+<a href="/tag/all-tags">Add Tags</a> <br>
+<a href="/post/all-posts">Add A Post</a> <br>
 
 
 </body>

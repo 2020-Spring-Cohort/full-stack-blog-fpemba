@@ -12,8 +12,8 @@ public class Tag {
 
     @Id
     @GeneratedValue
-    private String name;
     private Long id;
+    private String name;
     @ManyToMany
     private Collection<Post> posts;
 

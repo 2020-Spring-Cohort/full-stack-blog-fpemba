@@ -2,10 +2,7 @@ package org.wcci.blog.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.wcci.blog.models.Author;
 import org.wcci.blog.storages.AuthorStorage;
 
@@ -19,21 +16,31 @@ public class AuthorController {
         this.authorStorage = authorStorage;
     }
 
-    @RequestMapping
-    public String displayAuthors(Model model) {
-        model.addAttribute("authors", authorStorage.getAll());
+//    @RequestMapping()
+//    public String displayAuthors(Model model) {
+//        model.addAttribute("authors", authorStorage.getAll());
+//        return "author";
+//    }
+
+    @GetMapping("/single-author/{authorName}")
+    public String displaySingleAuthor(@PathVariable String authorName, Model model) {
+        Author retrievedAuthor = authorStorage.findAuthorByName(authorName);
+        model.addAttribute("author", retrievedAuthor);
         return "author";
     }
 
-    @GetMapping("add")
-    public String addAuthorForm(Model model) {
-        model.addAttribute("Author", "Add an author");
-        return "author";
-    }
-
-    @PostMapping("submit")
-    public String processAddAuthorForm(@RequestParam("authorName") String authorName) {
+    @PostMapping("add")
+    public String AddAuthorForm(@RequestParam String authorName) {
         authorStorage.store(new Author(authorName));
-        return "redirect:";
+        return "redirect:/author/all-authors";
     }
+
+    @GetMapping("all-authors")
+    public String viewAllAuthors(Model model) {
+        model.addAttribute("authors", authorStorage.getAll());
+        return "authors";
+
+    }
+
+
 }

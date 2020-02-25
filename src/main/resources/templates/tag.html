@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns: th="http://www.thymeleaf.org/"
->
+      xmlns:th="http://www.w3.org/1999/xhtml">
 <head></head>
 
 <body>
 
-<h1> Blog Posts</h1>
+<h1 th:text="${tag.name}">Default Title</h1>
 
 
 <a href="/author/all-authors">Add Authors</a> <br>
 <a href="/category/all-categories">Add Categories</a> <br>
-<a href="/tag/all-tags">Add Tags</a> <br>
+<a href="/post/all-posts">Add A Post</a> <br>
 
 
 </body>

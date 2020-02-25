@@ -1,22 +1,25 @@
 <!DOCTYPE html>
-<html lang="en" xmlns: th="//www.thymeleaf.org/"
-      xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/"
+      xmlns="http://www.w3.org/1999/xhtml">
 <head></head>
 
 <body>
 
-<h1 th:text="${title}">Default Title</h1>
-
-<a href="/blog">Add A Post</a>
-<a href="/category">Add A Category</a>
-<a href="/author">Add An author</a>
+<h1>Tags</h1>
 
 
-<form method="post">
+<a href="/category/all-categories">Add Categories</a> <br>
+<a href="/author/all-authors">Add yourself as an Author</a> <br>
+<a href="/post/all-posts">Add A Post</a> <br>
 
-    <input type="text" name="tagsName" placeholder="name"/>
-    <input type="text" name="tagsPost" placeholder="post"/>
-    <input type="submit" value="Add A Tag"/>
+<div th:each="tag : ${tags}">
+    <a th:text="${tag.name}" th:href="'/tag/single-tag/' + ${tag.name}"></a>
+</div>
+
+<form action="/tag/add" method="post">
+
+    <input type="text" name="tagName" placeholder="name"/>
+    <button type="submit"> Add tag</button>
 
 </form>
 

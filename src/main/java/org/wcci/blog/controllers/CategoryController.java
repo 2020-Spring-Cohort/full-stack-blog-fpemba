@@ -2,10 +2,7 @@ package org.wcci.blog.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.wcci.blog.models.Category;
 import org.wcci.blog.storages.CategoryStorage;
 
@@ -19,22 +16,29 @@ public class CategoryController {
         this.categoryStorage = categoryStorage;
     }
 
-    @RequestMapping
-    public String displayCategories(Model model) {
-        model.addAttribute("categories", categoryStorage.getAll());
+//    @RequestMapping
+//    public String displayCategories(Model model) {
+//        model.addAttribute("categories", categoryStorage.getAll());
+//        return "category";
+//    }
+
+    @GetMapping("/single-category/{categoryName}")
+    public String displaySingleCategory(@PathVariable String categoryName, Model model) {
+        Category retrievedCategory = categoryStorage.findCategoryByName(categoryName);
+        model.addAttribute("category", retrievedCategory);
         return "category";
     }
 
-    @GetMapping("add")
-    public String addCategoryForm(Model model) {
-        model.addAttribute("category", "Add a category");
-        return "category";
-    }
-
-    @PostMapping("submit")
-    public String processAddCategoryForm(@RequestParam("categoryName") String categoryName) {
+    @PostMapping("add")
+    public String AddCategoryForm(@RequestParam String categoryName) {
         categoryStorage.store(new Category(categoryName));
-        return "redirect:";
+        return "redirect:/category/all-categories";
+    }
+
+    @GetMapping("all-categories")
+    public String viewAllCategories(Model model) {
+        model.addAttribute("categories", categoryStorage.getAll());
+        return "categories";
     }
 
 

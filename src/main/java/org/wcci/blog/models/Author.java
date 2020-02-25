@@ -12,10 +12,11 @@ public class Author {
 
     @Id
     @GeneratedValue
+    private Long id;
     private String name;
     @OneToMany(mappedBy = "authors")
     private Collection<Post> posts;
-    private Long id;
+
 
     public Author(String name) {
         this.name = name;
@@ -29,4 +30,7 @@ public class Author {
         return name;
     }
 
+    public Long getId() {
+        return id;
+    }
 }

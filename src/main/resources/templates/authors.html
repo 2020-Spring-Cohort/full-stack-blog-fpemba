@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns: th="http://www.thymeleaf.org/"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head></head>
+
+<body>
+
+<h1>Authors</h1>
+
+
+<a href="/category/all-categories">Add Categories</a> <br>
+<a href="/tag/all-tags">Add Tags</a> <br>
+<a href="/post/all-posts">Add A Post</a> <br>
+
+<div th:each="author : ${authors}">
+    <a th:text="${author.name}" th:href="'/author/single-author/' + ${author.name}"></a>
+</div>
+
+<form action="/author/add" method="post">
+
+    <input type="text" name="authorName" placeholder="name"/>
+    <button type="submit"> Add yourself as an author</button>
+
+</form>
+
+
+</body>
+
+</html>
