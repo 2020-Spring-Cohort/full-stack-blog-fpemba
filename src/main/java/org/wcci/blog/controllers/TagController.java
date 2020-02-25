@@ -16,11 +16,6 @@ public class TagController {
         this.tagStorage = tagStorage;
     }
 
-//    @RequestMapping
-//    public String displayTags(Model model) {
-//        model.addAttribute("tags", tagStorage.getAll());
-//        return "tag";
-//    }
 
     @GetMapping("/single-tag/{tagName}")
     public String displaySingleTag(@PathVariable String tagName, Model model) {
@@ -31,7 +26,7 @@ public class TagController {
 
     @PostMapping("add")
     public String AddTagForm(@RequestParam String tagName) {
-        tagStorage.store(new Tag(tagName));
+        tagStorage.add(new Tag(tagName));
         return "redirect:/tag/all-tags";
     }
 

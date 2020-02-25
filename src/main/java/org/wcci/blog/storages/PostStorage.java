@@ -11,7 +11,7 @@ public interface PostStorage {
 
     void store(Post post);
 
-    Post findPostById(long id);
+    Object findPostById(Long id);
 
 }
 

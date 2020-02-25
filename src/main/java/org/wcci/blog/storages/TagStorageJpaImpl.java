@@ -21,7 +21,7 @@ public class TagStorageJpaImpl implements TagStorage {
     }
 
     @Override
-    public void store(Tag tag) {
+    public void add(Tag tag) {
 
         repository.save(tag);
 

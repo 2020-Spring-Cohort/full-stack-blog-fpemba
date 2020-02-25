@@ -16,12 +16,6 @@ public class AuthorController {
         this.authorStorage = authorStorage;
     }
 
-//    @RequestMapping()
-//    public String displayAuthors(Model model) {
-//        model.addAttribute("authors", authorStorage.getAll());
-//        return "author";
-//    }
-
     @GetMapping("/single-author/{authorName}")
     public String displaySingleAuthor(@PathVariable String authorName, Model model) {
         Author retrievedAuthor = authorStorage.findAuthorByName(authorName);
