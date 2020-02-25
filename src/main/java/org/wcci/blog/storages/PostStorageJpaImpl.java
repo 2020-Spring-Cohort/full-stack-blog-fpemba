@@ -27,8 +27,9 @@ public class PostStorageJpaImpl implements PostStorage {
 
     }
 
+
     @Override
-    public Post findPostById(long id) {
+    public Post findPostById(Long id) {
         return repository.findById(id).get();
     }
 

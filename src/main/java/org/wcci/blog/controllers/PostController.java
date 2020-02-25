@@ -4,36 +4,35 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.wcci.blog.models.Post;
+import org.wcci.blog.storages.AuthorStorage;
+import org.wcci.blog.storages.CategoryStorage;
 import org.wcci.blog.storages.PostStorage;
+import org.wcci.blog.storages.TagStorage;
 
 @Controller
 @RequestMapping("post")
 public class PostController {
 
     private PostStorage postStorage;
+    private AuthorStorage authorStorage;
+    private CategoryStorage categoryStorage;
+    private TagStorage tagStorage;
 
-    public PostController(PostStorage storage) {
-        this.postStorage = storage;
+    public PostController(PostStorage postStorage, AuthorStorage authorStorage, CategoryStorage categoryStorage, TagStorage tagStorage) {
+        this.postStorage = postStorage;
+        this.authorStorage = authorStorage;
+        this.categoryStorage = categoryStorage;
+        this.tagStorage = tagStorage;
     }
 
-    @RequestMapping
-    public String displayBlogPosts(Model model) {
-        model.addAttribute("posts", postStorage.getAll());
-        return "post";
-    }
 
-//    @GetMapping("add")
-//    public String addPostForm(Model model) {
-//        model.addAttribute("Post", "Add a Post");
-//        return "post";
-//    }
-
-
-    @GetMapping("/single-post/{id}")
-    public String displaySinglePost(@PathVariable long id, Model model) {
-        Post retrievedPost = postStorage.findPostById(id);
+    @GetMapping("/single-post/{id}}")
+    public String displaySinglePost(@PathVariable Long id, Model model) {
+        Post retrievedPost = (Post) postStorage.findPostById(id);
         model.addAttribute("post", retrievedPost);
+        model.addAttribute("tags", tagStorage.getAll());
         return "post";
+//
     }
 
     @PostMapping("add")
@@ -43,8 +42,11 @@ public class PostController {
     }
 
     @GetMapping("all-posts")
-    public String viewAllAuthors(Model model) {
+    public String viewAllPosts(Model model) {
         model.addAttribute("posts", postStorage.getAll());
+        model.addAttribute("author", authorStorage.getAll());
+        model.addAttribute("category", categoryStorage.getAll());
+        model.addAttribute("tags", tagStorage.getAll());
         return "posts";
 
     }

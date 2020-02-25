@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns: th="http://www.thymeleaf.org/"
+      xmlns:th="http://www.w3.org/1999/xhtml">
 >
 
 <head>
@@ -41,6 +42,9 @@
 </label>
 
 
+<div th:each="post : ${posts}">
+    <a th:text="${post.id}" th:href="'/post/single-post/' + ${post.id}"></a>
+</div>
 <form method="post" action="/post/add">
 
     <input type="text" name="postTitle" placeholder="Post Title"/> <br>

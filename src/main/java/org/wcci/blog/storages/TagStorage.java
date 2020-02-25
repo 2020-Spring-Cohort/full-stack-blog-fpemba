@@ -9,7 +9,7 @@ public interface TagStorage {
 
     Collection<Tag> getAll();
 
-    void store(Tag tag);
+    void add(Tag tag);
 
     Tag findTagByName(String name);
 }
