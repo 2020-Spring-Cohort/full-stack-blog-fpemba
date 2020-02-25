@@ -28,18 +28,8 @@ public class PostStorageJpaImpl implements PostStorage {
     }
 
     @Override
-    public Post findPostByTitle(String title) {
-        return repository.findByTitle(title).get();
-    }
-
-    @Override
-    public Post findPostByPublishedDate(String publishedDate) {
-        return repository.findByPublishedDate(publishedDate).get();
-    }
-
-    @Override
-    public Post findPostByBody(String body) {
-        return repository.findByBody(body).get();
+    public Post findPostById(long id) {
+        return repository.findById(id).get();
     }
 
 

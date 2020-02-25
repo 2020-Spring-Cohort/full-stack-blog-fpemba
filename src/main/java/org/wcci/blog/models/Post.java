@@ -1,6 +1,8 @@
 package org.wcci.blog.models;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 
 @Entity
@@ -9,24 +11,25 @@ public class Post {
 
     @Id
     @GeneratedValue
+    private Long id;
     private String title;
     private String body;
     @ManyToOne
     private Author authors;
     private String publishedDate;
     @ManyToOne
-    private Category category;
+    private Category categories;
     @ManyToMany(mappedBy = "posts")
     private Collection<Tag> tags;
-    private Long id;
+
 
     public Post() {
     }
 
-    public Post(String title, String body, String publishedDate) {
+    public Post(String title, String body) {
         this.title = title;
         this.body = body;
-        this.publishedDate = publishedDate;
+        this.publishedDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("MMM dd yyyy h:mm a"));
     }
 
     public String getTitle() {
@@ -37,9 +40,7 @@ public class Post {
         return body;
     }
 
-    public String getPublishedDate() {
-        return publishedDate;
+    public Long getId() {
+        return id;
     }
-
-
 }

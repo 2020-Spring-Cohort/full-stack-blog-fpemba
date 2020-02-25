@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns: th="http://www.thymeleaf.org/"
+>
+
+<head>
+
+</head>
+
+<body>
+<h1>Blog Posts</h1>
+
+
+<a href="/author/all-authors">Add Authors</a> <br>
+<a href="/category/all-categories">Add Categories</a> <br>
+<a href="/tag/all-tags">Add Tags</a> <br>
+
+
+<label for="author">
+    <select id="author">
+        <option>Author1</option>
+        <option>Author2</option>
+        <option>Author3</option>
+    </select>
+</label>
+
+
+<label for="categories">
+    <select id="categories">
+        <option>category1</option>
+        <option>category2</option>
+        <option>category3</option>
+    </select>
+</label>
+
+<label for="tags">
+    <select id="tags">
+        <option>tag1</option>
+        <option>tag2</option>
+        <option>tag3</option>
+    </select>
+</label>
+
+
+<form method="post" action="/post/add">
+
+    <input type="text" name="postTitle" placeholder="Post Title"/> <br>
+    <input type="text" name="postBody" placeholder="Post"/> <br>
+
+    <input type="submit" value="Add A Post!"/>
+
+
+</form>
+
+
+<!--<div th:each="post : ${posts}">-->
+
+<!--    <h1 class="post__title"><a th:text="${post.getTitle}" th:href="@{'/post/' + ${post.getId()}}">Default-->
+<!--        Title</a></h1>-->
+<!--&lt;!&ndash;    <h3 th:text="${post.publishedDate}" class="post__publishedDate">Default publishedDate</h3>&ndash;&gt;-->
+
+<!--    <p th:text="${post.getBody()}">Body</p>-->
+
+<!--</div>-->
+
+
+</body>
+
+</html>

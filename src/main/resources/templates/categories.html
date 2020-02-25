@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns: th="http://www.thymeleaf.org/"
+      xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+<head></head>
+
+<body>
+
+<h1>Categories</h1>
+
+
+<a href="/author/all-authors">Add Authors</a> <br>
+<a href="/tag/all-tags">Add Tags</a> <br>
+<a href="/post/all-posts">Add A Post</a> <br>
+
+<div th:each="category : ${categories}">
+    <a th:text="${category.name}" th:href="'/category/single-category/' + ${category.name}"></a>
+</div>
+
+<form action="/category/add" method="post">
+
+    <input type="text" name="categoryName" placeholder="Category"/>
+    <button type="submit"> Add A Category</button>
+
+</form>
+
+
+</body>
+
+</html>
