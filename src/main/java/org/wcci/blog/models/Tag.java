@@ -20,6 +20,10 @@ public class Tag {
     public Tag() {
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public Collection<Post> getPosts() {
         return posts;
     }
@@ -37,7 +41,21 @@ public class Tag {
         return name;
     }
 
-    public Long getId() {
-        return id;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Tag)) return false;
+
+        Tag tag = (Tag) o;
+
+        if (id != null ? !id.equals(tag.id) : tag.id != null) return false;
+        return name != null ? name.equals(tag.name) : tag.name == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        return result;
     }
 }
