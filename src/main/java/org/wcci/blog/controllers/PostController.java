@@ -27,13 +27,20 @@ public class PostController {
     }
 
 
-    @GetMapping("/single-post/{id}}")
-    public String displaySinglePost(@PathVariable Long id, Model model) {
-        Post retrievedPost = (Post) postStorage.findById(id);
+    @GetMapping("/single-post/{id}")
+    public String displayMultiplePost(@PathVariable Long id, Model model) {
+        Post retrievedPost = postStorage.findPostById(id);
         model.addAttribute("post", retrievedPost);
-        model.addAttribute("tags", tagStorage.getAll());
         return "post";
-//
+
+    }
+
+    @GetMapping("/all-post/{id}}")
+    public String displaySinglePost(@PathVariable Long id, Model model) {
+        Post retrievedPost = postStorage.findPostById(id);
+        model.addAttribute("post", retrievedPost);
+        return "post";
+
     }
 
     @PostMapping("add")

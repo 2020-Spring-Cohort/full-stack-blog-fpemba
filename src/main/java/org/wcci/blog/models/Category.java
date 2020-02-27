@@ -13,7 +13,7 @@ public class Category {
     @GeneratedValue
     private Long id;
     private String name;
-    @OneToMany(mappedBy = "categories")
+    @OneToMany(mappedBy = "category")
     private Collection<Post> posts;
 
 
@@ -36,6 +36,16 @@ public class Category {
     public Collection<Post> getPosts() {
 
         return posts;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", posts=" + posts +
+                '}';
     }
 
     @Override

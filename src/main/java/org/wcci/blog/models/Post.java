@@ -16,10 +16,10 @@ public class Post {
     private String title;
     private String body;
     @ManyToOne
-    private Author authors;
+    private Author author;
     private String publishedDate;
     @ManyToOne
-    private Category categories;
+    private Category category;
     @ManyToMany(mappedBy = "posts")
     private Collection<Tag> tags;
 
@@ -33,23 +33,19 @@ public class Post {
         this.publishedDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("MMM dd yyyy h:mm a"));
     }
 
-    public Post(Author authors, String title, String body) {
-        this.authors = authors;
-        this.title = title;
-        this.body = body;
-    }
-
-    public Post(Category categories, String title, String body) {
-        this.categories = categories;
-        this.title = title;
-        this.body = body;
-    }
-
-    public Post(Category categories, String title, String body, Tag... tags) {
-        this.categories = categories;
+    public Post(Author author, Category category, String title, String body, Tag... tags) {
+        this.author = author;
+        this.category = category;
         this.title = title;
         this.body = body;
         this.tags = Arrays.asList(tags);
+    }
+
+    public Post(Author author, Category category, String title, String body) {
+        this.author = author;
+        this.category = category;
+        this.title = title;
+        this.body = body;
     }
 
     public String getTitle() {
@@ -69,8 +65,16 @@ public class Post {
         return tags;
     }
 
-    public Collection<Author> getAuthors() {
+    public Author getAuthor() {
 
-        return (Collection<Author>) authors;
+        return author;
+    }
+
+    public String getPublishedDate() {
+        return publishedDate;
+    }
+
+    public Category getCategory() {
+        return category;
     }
 }

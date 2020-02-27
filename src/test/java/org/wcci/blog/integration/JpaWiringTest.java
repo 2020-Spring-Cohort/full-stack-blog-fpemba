@@ -1,13 +1,21 @@
 package org.wcci.blog.integration;
 
 
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.wcci.blog.models.Author;
+import org.wcci.blog.models.Category;
+import org.wcci.blog.models.Post;
 import org.wcci.blog.storages.Repositories.AuthorRepository;
 import org.wcci.blog.storages.Repositories.CategoryRepository;
 import org.wcci.blog.storages.Repositories.PostRepository;
 import org.wcci.blog.storages.Repositories.TagRepository;
+
+import java.util.Optional;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
 public class JpaWiringTest {
@@ -24,44 +32,48 @@ public class JpaWiringTest {
     private TestEntityManager entityManager;
 
 
-//    @Test
-//    public void authorShouldHaveAListOfPosts() {
-//
-//        Author testAuthor = new Author("name");
-//        Post testPost = new Post(testAuthor, "postTitle", "postBody");
-//
-//        authorRepository.save(testAuthor);
-//        postRepository.save(testPost);
-//
-//        entityManager.flush();
-//        entityManager.clear();
-//
-//        Optional<Author> retrievedAuthorOptional = authorRepository.findById(testAuthor.getId());
-//        Author retrievedAuthor = retrievedAuthorOptional.get();
-//        Post retrievedPost = postRepository.findById(testPost.getId()).get();
-//
-//        assertThat(retrievedAuthor.getPosts()).contains(testPost);
+    @Test
+    public void authorShouldHaveAListOfPosts() {
+
+
+        Author testAuthor = new Author("name");
+        Category testCategory = new Category("water");
+        Post testPost = new Post(testAuthor, testCategory, "postTitle", "postBody");
+
+        authorRepository.save(testAuthor);
+        postRepository.save(testPost);
+
+        entityManager.flush();
+        entityManager.clear();
+
+        Optional<Author> retrievedAuthorOptional = authorRepository.findById(testAuthor.getId());
+        Author retrievedAuthor = retrievedAuthorOptional.get();
+        Post retrievedPost = postRepository.findPostById(testPost.getId()).get();
+
+        assertThat(retrievedAuthor.getPosts()).contains(testPost);
 //        assertThat(retrievedPost.getAuthors()).contains(testAuthor);
-//    }
-//
-//    @Test
-//    public void categoryShouldHaveAListOfPosts() {
-//
-//        Category testCategory = new Category("water");
-//        Post testPost = new Post(testCategory, "postTitle", "postBody");
-//
-//        categoryRepository.save(testCategory);
-//        postRepository.save(testPost);
-//
-//        entityManager.flush();
-//        entityManager.clear();
-//
-//        Optional<Category> retrievedCategoryOptional = categoryRepository.findById(testCategory.getId());
-//        Category retrievedCategory = retrievedCategoryOptional.get();
-//        Post retrievedPost = postRepository.findById(testPost.getId()).get();
-//
-//        assertThat(retrievedCategory.getPosts()).contains(testPost);
-//    }
+    }
+
+    @Test
+    public void categoryShouldHaveAListOfPosts() {
+
+        Category testCategory = new Category("water");
+        Author testAuthor = new Author("name");
+
+        Post testPost = new Post(testAuthor, testCategory, "postTitle", "postBody");
+
+        categoryRepository.save(testCategory);
+        postRepository.save(testPost);
+
+        entityManager.flush();
+        entityManager.clear();
+
+        Optional<Category> retrievedCategoryOptional = categoryRepository.findById(testCategory.getId());
+        Category retrievedCategory = retrievedCategoryOptional.get();
+        Post retrievedPost = postRepository.findById(testPost.getId()).get();
+
+        assertThat(retrievedCategory.getPosts()).contains(testPost);
+    }
 //
 //    @Test
 //    public void tagsShouldBeAbleToHaveMultiplePosts() {
