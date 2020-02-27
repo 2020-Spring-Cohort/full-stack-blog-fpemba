@@ -1,17 +1,41 @@
 <!DOCTYPE html>
 <html lang="en" xmlns: th="http://www.thymeleaf.org/"
       xmlns:th="http://www.w3.org/1999/xhtml">
-<head></head>
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/layout.css">
+    <meta charset="UTF-8">
+    <title th:text="${category.getName()}">Category</title>
+</head>
 
-<body>
+<body class="container">
 
-<h1 th:text="${category.name}">Default Title</h1>
+<div class="container__nav">
+    <a href="/author/all-authors">Add Authors</a>
+    <a href="/tag/all-tags">Add Tags</a>
+    <a href="/post/all-posts">Add A Post</a>
+</div>
+
+<div class="container__body">
+
+    <h1 th:text="${category.getName()}">Categories</h1>
+    <h3 th:each="post: ${category.getPosts()}">
+        <a th:text="${post.getTitle()}" th:href="@{'/post/' + ${post.getId()}}">Post</a>
+    </h3>
 
 
-<a href="/author/all-authors">Add Authors</a> <br>
-<a href="/tag/all-tags">Add Tags</a> <br>
-<a href="/post/all-posts">Add A Post</a> <br>
+    <form action="/category/add" method="post">
 
+        <input type="text" name="categoryName" placeholder="Category"/>
+        <button type="submit"> Add A Category</button>
+
+    </form>
+
+</div>
+
+<footer class="container__footer">
+    <h3><a href="/">Home</a></h3>
+</footer>
 
 </body>
 

@@ -1,64 +1,65 @@
 <!DOCTYPE html>
 <html lang="en" xmlns: th="http://www.thymeleaf.org/"
       xmlns:th="http://www.w3.org/1999/xhtml">
->
+
 
 <head>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/layout.css">
+    <meta charset="UTF-8">
+    <title>Posts</title>
 
 </head>
 
-<body>
-<h1>Blog Posts</h1>
+<body class="container">
+<!--<h1>Blog Posts</h1>-->
+
+<div class="container__nav">
+    <a href="/author/all-authors">Add Authors</a>
+    <a href="/category/all-categories">Add Categories</a>
+    <a href="/tag/all-tags">Add Tags</a>
+</div>
+
+<div class="container__body">
+    <label for="author">
+        <select id="author">
+            <option>Bob</option>
+        </select>
+    </label>
 
 
-<a href="/author/all-authors">Add Authors</a> <br>
-<a href="/category/all-categories">Add Categories</a> <br>
-<a href="/tag/all-tags">Add Tags</a> <br>
-
-
-<label for="author">
-    <select id="author">
-        <option>Author1</option>
-        <option>Author2</option>
-        <option>Author3</option>
-    </select>
-</label>
-
-
-<label for="categories">
-    <select id="categories">
-        <option>category1</option>
-        <option>category2</option>
-        <option>category3</option>
+    <label for="categories">
+        <select id="categories">
+            <option>Water</option>
     </select>
 </label>
 
 <label for="tags">
     <select id="tags">
-        <option>tag1</option>
-        <option>tag2</option>
-        <option>tag3</option>
+        <option>Fresh</option>
     </select>
 </label>
 
+    <br>
 
-<div th:each="post : ${posts}">
-    <a th:text="${post.title}" th:href="'/post/single-post/' + ${post.id}"></a>
-    <!--    <a th:text="$post.body}" th:href="'/post/single-post/' + ${post.title}"></a>-->
-    <!--    <a th:text="$post.publishedDate}" th:href="'/post/single-post/' + ${post.body}"></a>-->
+    <div th:each="post : ${posts}" th:remove="tag">
+        <a th:text="${post.title}" th:href="'/post/single-post/' + ${post.id}"></a>
+        <!--    <a th:text="$post.body}" th:href="'/post/single-post/' + ${post.title}"></a>-->
+        <!--    <a th:text="$post.publishedDate}" th:href="'/post/single-post/' + ${post.body}"></a>-->
 
+
+    </div>
+    <form method="post" action="/post/add">
+
+        <input type="text" name="postTitle" placeholder="Post Title"/> <br>
+        <input type="text" name="postBody" placeholder="Post"/> <br>
+
+        <input type="submit" value="Add A Post!"/>
+
+
+    </form>
 
 </div>
-<form method="post" action="/post/add">
-
-    <input type="text" name="postTitle" placeholder="Post Title"/> <br>
-    <input type="text" name="postBody" placeholder="Post"/> <br>
-
-    <input type="submit" value="Add A Post!"/>
-
-
-</form>
-
 
 <!--<div th:each="post : ${posts}">-->
 
@@ -70,6 +71,9 @@
 
 <!--</div>-->
 
+<footer class="container__footer">
+    <h3><a href="/">Home</a></h3>
+</footer>
 
 </body>
 

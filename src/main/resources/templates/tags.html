@@ -1,29 +1,38 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/"
       xmlns="http://www.w3.org/1999/xhtml">
-<head></head>
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/layout.css">
+    <meta charset="UTF-8">
+    <title>Tags</title>
+</head>
 
-<body>
-
-<h1>Tags</h1>
+<body class="container">
 
 
-<a href="/category/all-categories">Add Categories</a> <br>
-<a href="/author/all-authors">Add yourself as an Author</a> <br>
-<a href="/post/all-posts">Add A Post</a> <br>
-
-<div th:each="tag : ${tags}">
-    <a th:text="${tag.name}" th:href="'/tag/single-tag/' + ${tag.name}"></a>
+<div class="container__nav">
+    <a href="/category/all-categories">Add Categories</a>
+    <a href="/author/all-authors">Add yourself as an Author</a>
+    <a href="/post/all-posts">Add A Post</a>
 </div>
 
-<form action="/tag/add" method="post">
+<div class="container__body">
+    <div th:each="tag : ${tags}" th:remove="tag">
+        <a th:text="${tag.name}" th:href="'/tag/single-tag/' + ${tag.name}"></a>
+    </div>
 
-    <input type="text" name="tagName" placeholder="name"/>
-    <button type="submit"> Add tag</button>
+    <form action="/tag/add" method="post">
 
-</form>
+        <input type="text" name="tagName" placeholder="name"/>
+        <button type="submit"> Add tag</button>
 
+    </form>
+</div>
 
+<footer class="container__footer">
+    <h3><a href="/">Home</a></h3>
+</footer>
 </body>
 
 </html>
