@@ -30,20 +30,21 @@ public class Populator implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        Author user = new Author("user");
+        Author user = new Author("Bob");
         authorStorage.store(user);
 
-        Category water = new Category("water");
+        Category water = new Category("Water");
         categoryStorage.store(water);
 
-        Post waterPost1 = new Post("test", "test");
-        Post waterPost2 = new Post("test1", "test");
-        Post waterPost3 = new Post("test2", "test");
+        Post waterPost1 = new Post("Spring Water", "Spring Water is water derived from an underground.");
+        Post waterPost2 = new Post("Fiji Water", "From a sustainable ancient artesian aquifer in Fiji.");
+        Post waterPost3 = new Post("Ice Mountain", "Ice Mountain is a brand of bottled water from the Nestlé company.");
+
         postStorage.store(waterPost1);
         postStorage.store(waterPost2);
         postStorage.store(waterPost3);
 
-        Tag fresh = new Tag("#fresh", waterPost1, waterPost2, waterPost3);
+        Tag fresh = new Tag("fresh", waterPost1, waterPost2, waterPost3);
         tagStorage.add(fresh);
 
     }

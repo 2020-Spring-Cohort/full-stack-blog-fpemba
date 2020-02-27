@@ -1,17 +1,48 @@
 <!DOCTYPE html>
 <html lang="en" xmlns: th="http://www.thymeleaf.org/"
->
-<head></head>
+      xmlns:th="http://www.w3.org/1999/xhtml">
 
-<body>
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/layout.css">
+    <meta charset="UTF-8">
+    <title th:text="${post.getName()}">Post</title>
+</head>
 
-<h1> Blog Posts</h1>
+<body class="container">
+
+<!--<h1> Blog Posts</h1>-->
+
+<div class="container__body">
+    <a href="/author/all-authors">Add Authors</a>
+    <a href="/category/all-categories">Add Categories</a>
+    <a href="/tag/all-tags">Add Tags</a>
+</div>
+
+<div class="container__body">
+
+    <h1 th:text="${post.getTitle()}">Default Title</h1>
+    <h2 th:text="${review.getBody()}">Default Body</h2>
 
 
-<a href="/author/all-authors">Add Authors</a> <br>
-<a href="/category/all-categories">Add Categories</a> <br>
-<a href="/tag/all-tags">Add Tags</a> <br>
+    <h3><a th:text="${post.getCategory().getName()}"
+           th:href="@{'/category/' + ${post.getCategory().getName()}}">Default Category
+    </a></h3>
 
+
+    <div th:each="tag : ${post.getTags()}" th:remove="tag">
+        <p><a th:text="${tag.getName()}" th:href="@{'/tag/' + ${tag.getId()}}">Tags</a></p>
+    </div>
+
+    <div th:each="author : ${post.getAuthors()}" th:remove="author">
+        <p><a th:text="${author.getName()}" th:href="@{'/author/' + ${author.getId()}}">Authors</a></p>
+    </div>
+
+</div>
+
+<footer class="container__footer">
+    <h3><a href="/">Home</a></h3>
+</footer>
 
 </body>
 
