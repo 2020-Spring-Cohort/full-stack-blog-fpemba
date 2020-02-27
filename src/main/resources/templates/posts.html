@@ -43,7 +43,11 @@
 
 
 <div th:each="post : ${posts}">
-    <a th:text="${post.id}" th:href="'/post/single-post/' + ${post.id}"></a>
+    <a th:text="${post.title}" th:href="'/post/single-post/' + ${post.id}"></a>
+    <!--    <a th:text="$post.body}" th:href="'/post/single-post/' + ${post.title}"></a>-->
+    <!--    <a th:text="$post.publishedDate}" th:href="'/post/single-post/' + ${post.body}"></a>-->
+
+
 </div>
 <form method="post" action="/post/add">
 

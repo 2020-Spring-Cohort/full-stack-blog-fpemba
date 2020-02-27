@@ -12,4 +12,6 @@ public interface TagStorage {
     void add(Tag tag);
 
     Tag findTagByName(String name);
+
+    Tag findTagById(long id);
 }

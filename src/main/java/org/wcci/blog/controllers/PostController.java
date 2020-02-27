@@ -18,6 +18,7 @@ public class PostController {
     private CategoryStorage categoryStorage;
     private TagStorage tagStorage;
 
+
     public PostController(PostStorage postStorage, AuthorStorage authorStorage, CategoryStorage categoryStorage, TagStorage tagStorage) {
         this.postStorage = postStorage;
         this.authorStorage = authorStorage;
@@ -28,7 +29,7 @@ public class PostController {
 
     @GetMapping("/single-post/{id}}")
     public String displaySinglePost(@PathVariable Long id, Model model) {
-        Post retrievedPost = (Post) postStorage.findPostById(id);
+        Post retrievedPost = (Post) postStorage.findById(id);
         model.addAttribute("post", retrievedPost);
         model.addAttribute("tags", tagStorage.getAll());
         return "post";

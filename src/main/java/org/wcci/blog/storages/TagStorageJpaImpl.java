@@ -17,8 +17,10 @@ public class TagStorageJpaImpl implements TagStorage {
 
     @Override
     public Collection<Tag> getAll() {
+
         return (Collection<Tag>) repository.findAll();
     }
+
 
     @Override
     public void add(Tag tag) {
@@ -27,8 +29,15 @@ public class TagStorageJpaImpl implements TagStorage {
 
     }
 
+
     @Override
     public Tag findTagByName(String name) {
+
         return repository.findByName(name).get();
+    }
+
+    @Override
+    public Tag findTagById(long id) {
+        return repository.findById(id).get();
     }
 }
