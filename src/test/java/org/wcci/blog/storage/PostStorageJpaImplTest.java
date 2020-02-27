@@ -27,13 +27,13 @@ public class PostStorageJpaImplTest {
         postStorage = new PostStorageJpaImpl(postRepository);
         Category category = new Category("water");
         Author author = new Author("user");
-        post = new Post(category, "test", "test");
+        post = new Post(author, category, "test", "test");
     }
 
     @Test
     public void shouldFindPostByID() {
         when(postRepository.findById(1L)).thenReturn(Optional.of(post));
-        Post retrievedPost = (Post) postStorage.findById(1L);
+        Post retrievedPost = (Post) postStorage.findPostById(1L);
         assertThat(retrievedPost).isEqualTo(post);
     }
 

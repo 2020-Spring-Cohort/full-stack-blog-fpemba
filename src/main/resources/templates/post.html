@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link rel="stylesheet" type="text/css" href="/css/layout.css">
     <meta charset="UTF-8">
-    <title th:text="${post.getName()}">Post</title>
+    <title th:text="${post.title}">Post</title>
 </head>
 
 <body class="container">
@@ -21,22 +21,34 @@
 
 <div class="container__body">
 
-    <h1 th:text="${post.getTitle()}">Default Title</h1>
-    <h2 th:text="${review.getBody()}">Default Body</h2>
+    <h1 th:text="${post.title}">Default Title</h1>
+    <h2 th:text="${post.body}">Default Body</h2>
+
+    <!--    <div th:each="author : ${post.author}" th:remove="tag">-->
+    <!--        <p><a th:text="${post.author.name()}" th:href="@{'/author/' + ${post.author.name()}}">Authors</a></p>-->
+    <!--    </div>-->
+
+    <!--    <div th:each="category : ${post.category}" th:remove="tag">-->
+    <!--    <p><a th:text="${post.category.name}"  th:href="@{'/category/' + ${post.category.name}}">Default Category-->
+    <!--    </a></p>-->
 
 
-    <h3><a th:text="${post.getCategory().getName()}"
-           th:href="@{'/category/' + ${post.getCategory().getName()}}">Default Category
-    </a></h3>
+    <!--        <div th:each="tag : ${post.tags()}" th:remove="tag">-->
+    <!--            <p><a th:text="${post.tag.name()}" th:href="@{'/tag/' + ${post.tag.name}}">Tags</a></p>-->
+    <!--        </div>-->
 
-
-    <div th:each="tag : ${post.getTags()}" th:remove="tag">
-        <p><a th:text="${tag.getName()}" th:href="@{'/tag/' + ${tag.getId()}}">Tags</a></p>
+    <div th:each="author : ${post.author}" th:remove="tag">
+        <p><a th:text="${author.name}" th:href="@{'/author/' + ${author.getName()}}">Author</a></p>
     </div>
 
-    <div th:each="author : ${post.getAuthors()}" th:remove="author">
-        <p><a th:text="${author.getName()}" th:href="@{'/author/' + ${author.getId()}}">Authors</a></p>
+    <div th:each="category : ${post.category}" th:remove="tag">
+        <p><a th:text="${category.name}" th:href="@{'/category/' + ${category.getName()}}">Category</a></p>
     </div>
+
+    <div th:each="tag : ${post.tags}" th:remove="tag">
+        <p><a th:text="${tag.name}" th:href="@{'/tag/' + ${tag.getId()}}">Tags</a></p>
+    </div>
+
 
 </div>
 

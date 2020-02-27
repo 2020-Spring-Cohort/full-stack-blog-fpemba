@@ -14,11 +14,12 @@ public class Author {
     @GeneratedValue
     private Long id;
     private String name;
-    @OneToMany(mappedBy = "authors")
+    @OneToMany(mappedBy = "author")
     private Collection<Post> posts;
 
 
     public Author(String name) {
+
         this.name = name;
     }
 
@@ -37,6 +38,14 @@ public class Author {
     public Collection<Post> getPosts() {
 
         return posts;
+    }
+
+    @Override
+    public String toString() {
+        return "Author{" +
+                "name='" + name + '\'' +
+                ", posts=" + posts +
+                '}';
     }
 
     @Override
