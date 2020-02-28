@@ -62,13 +62,16 @@ public class JpaWiringTest {
 
         Post testPost = new Post(testAuthor, testCategory, "postTitle", "postBody");
 
+        authorRepository.save(testAuthor);
         categoryRepository.save(testCategory);
         postRepository.save(testPost);
 
         entityManager.flush();
         entityManager.clear();
 
+        Optional<Author> retrievedAuthorOptional = authorRepository.findById(testAuthor.getId());
         Optional<Category> retrievedCategoryOptional = categoryRepository.findById(testCategory.getId());
+        Author retrievedAuthor = retrievedAuthorOptional.get();
         Category retrievedCategory = retrievedCategoryOptional.get();
         Post retrievedPost = postRepository.findById(testPost.getId()).get();
 

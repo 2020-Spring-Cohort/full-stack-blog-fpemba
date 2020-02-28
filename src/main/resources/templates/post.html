@@ -24,18 +24,6 @@
     <h1 th:text="${post.title}">Default Title</h1>
     <h2 th:text="${post.body}">Default Body</h2>
 
-    <!--    <div th:each="author : ${post.author}" th:remove="tag">-->
-    <!--        <p><a th:text="${post.author.name()}" th:href="@{'/author/' + ${post.author.name()}}">Authors</a></p>-->
-    <!--    </div>-->
-
-    <!--    <div th:each="category : ${post.category}" th:remove="tag">-->
-    <!--    <p><a th:text="${post.category.name}"  th:href="@{'/category/' + ${post.category.name}}">Default Category-->
-    <!--    </a></p>-->
-
-
-    <!--        <div th:each="tag : ${post.tags()}" th:remove="tag">-->
-    <!--            <p><a th:text="${post.tag.name()}" th:href="@{'/tag/' + ${post.tag.name}}">Tags</a></p>-->
-    <!--        </div>-->
 
     <div th:each="author : ${post.author}" th:remove="tag">
         <p><a th:text="${author.name}" th:href="@{'/author/' + ${author.getName()}}">Author</a></p>

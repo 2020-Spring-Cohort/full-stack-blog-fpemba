@@ -7,6 +7,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.Model;
+import org.wcci.blog.models.Author;
 import org.wcci.blog.models.Category;
 import org.wcci.blog.models.Post;
 import org.wcci.blog.storages.AuthorStorage;
@@ -29,6 +30,7 @@ public class PostControllerTest {
     private PostStorage mockPostStorage;
     private Post testPost;
     private MockMvc mockMvc;
+    private Author testAuthor;
     private Category testCategory;
 
     @BeforeEach
@@ -40,6 +42,7 @@ public class PostControllerTest {
         underTest = new PostController(mockPostStorage, mockAuthorStorage, mockCategoryStorage, mockTagStorage);
         mockMvc = MockMvcBuilders.standaloneSetup(underTest).build();
         model = mock(Model.class);
+        testAuthor = new Author("user");
         testCategory = new Category("water");
         testPost = new Post("test", "test");
         when(mockCategoryStorage.findCategoryByName("water")).thenReturn(testCategory);
@@ -56,8 +59,9 @@ public class PostControllerTest {
     @Test
     public void displayPostInteractsWithDependenciesCorrectly() {
         underTest.displaySinglePost(1L, model);
-        verify(mockPostStorage).findPostById(1);
-        verify(model).addAttribute("post", testPost);
+        verify(mockPostStorage).findPostById(1L);
+        verify(model).addAttribute("posts", testPost);
+
     }
 
     @Test
