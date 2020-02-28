@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org/"
-      xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns: th="http://www.thymeleaf.org/"
+      xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link rel="stylesheet" type="text/css" href="/css/layout.css">
@@ -18,16 +18,19 @@
 </div>
 
 <div class="container__body">
-    <div th:each="tag : ${tags}" th:remove="tag">
-        <a th:text="${tag.name}" th:href="'/tag/single-tag/' + ${tag.name}"></a>
+    <div class="container___body__info">
+        <div th:each="tag : ${tags}" th:remove="tag">
+            <a th:text="${tag.name}" th:href="'/tag/single-tag/' + ${tag.name}"></a>
+        </div>
+
+        <form action="/tag/add" method="post">
+
+            <input type="text" name="tagName" placeholder="name"/>
+            <button type="submit"> Add tag</button>
+
+        </form>
     </div>
 
-    <form action="/tag/add" method="post">
-
-        <input type="text" name="tagName" placeholder="name"/>
-        <button type="submit"> Add tag</button>
-
-    </form>
 </div>
 
 <footer class="container__footer">

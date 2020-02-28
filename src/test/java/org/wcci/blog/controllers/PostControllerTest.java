@@ -35,10 +35,10 @@ public class PostControllerTest {
 
     @BeforeEach
     void setUp() {
-        PostStorage mockPostStorage = mock(PostStorage.class);
-        CategoryStorage mockCategoryStorage = mock(CategoryStorage.class);
-        TagStorage mockTagStorage = mock(TagStorage.class);
-        AuthorStorage mockAuthorStorage = mock(AuthorStorage.class);
+        mockPostStorage = mock(PostStorage.class);
+        mockCategoryStorage = mock(CategoryStorage.class);
+        mockTagStorage = mock(TagStorage.class);
+        mockAuthorStorage = mock(AuthorStorage.class);
         underTest = new PostController(mockPostStorage, mockAuthorStorage, mockCategoryStorage, mockTagStorage);
         mockMvc = MockMvcBuilders.standaloneSetup(underTest).build();
         model = mock(Model.class);
@@ -60,7 +60,8 @@ public class PostControllerTest {
     public void displayPostInteractsWithDependenciesCorrectly() {
         underTest.displaySinglePost(1L, model);
         verify(mockPostStorage).findPostById(1L);
-        verify(model).addAttribute("posts", testPost);
+        verify(model).addAttribute("post", testPost);
+
 
     }
 
@@ -78,13 +79,13 @@ public class PostControllerTest {
     @Test
     public void addPostShouldRedirect() throws Exception {
         mockMvc.perform(post("/post/add")
+                .param("author", "user")
                 .param("category", "water")
-                .param("authorName", "user")
                 .param("postTitle", "test")
                 .param("postBody", "test"))
                 .andExpect(status().is3xxRedirection());
 
-        verify(mockPostStorage).store(new Post("test", "test"));
+        verify(mockPostStorage).store(new Post("user", "water", "test", "test"));
     }
 
 

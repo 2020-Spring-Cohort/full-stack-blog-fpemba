@@ -17,19 +17,15 @@
 </div>
 
 <div class="container__body">
+    <div class="container___body__info">
 
-    <h1 th:text="${author.getName()}">Authors</h1>
-    <h3 th:each="post: ${author.getPosts()}">
-        <a th:text="${post.getTitle()}" th:href="@{'/post/' + ${post.getId()}}">Post</a>
-    </h3>
+        <h1 th:text="${author.getName()}">Authors</h1> <br>
+        <h3 th:each="post: ${author.getPosts()}">
+            <a th:text="${post.getTitle()}" th:href="@{'/post/' + ${post.getId()}}">Post</a>
+        </h3> <br>
 
-    <form action="/author/add" method="post">
 
-        <input type="text" name="authorName" placeholder="name"/>
-        <button type="submit"> Add yourself as an author</button>
-
-    </form>
-
+    </div>
 </div>
 
 <footer class="container__footer">

@@ -6,6 +6,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.wcci.blog.storages.AuthorStorage;
@@ -17,6 +18,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+@DirtiesContext
 @ExtendWith(SpringExtension.class)
 @WebMvcTest
 public class WebLayerTest {
@@ -38,7 +40,7 @@ public class WebLayerTest {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(view().name("posts"))
-                .andExpect(model().attributeExists("posts"));
+                .andExpect(model().attributeExists("post"));
     }
 
     @Test
