@@ -17,10 +17,13 @@
 </div>
 
 <div class="container__body">
-    <h1 th:text="${tag.getName()}">Tags</h1>
-    <h3 th:each="post: ${tag.getPosts()}">
-        <a th:text="${post.getTitle()}" th:href="@{'/post/' + ${post.getId()}}">Post</a>
-    </h3>
+    <div class="container___body__info">
+        <h1 th:text="${tag.getName()}">Tags</h1> <br>
+        <h3 th:each="post: ${tag.getPosts()}">
+            <a th:text="${post.getTitle()}" th:href="@{'/post/' + ${post.getId()}}">Post</a>
+        </h3> <br>
+
+    </div>
 </div>
 
 <footer class="container__footer">

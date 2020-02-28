@@ -48,6 +48,10 @@ public class Post {
         this.body = body;
     }
 
+    public Post(String author, String category, String postTitle, String postBody) {
+
+    }
+
     public String getTitle() {
         return title;
     }
@@ -76,5 +80,31 @@ public class Post {
 
     public Category getCategory() {
         return category;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Post post = (Post) o;
+
+        if (title != null ? !title.equals(post.title) : post.title != null) return false;
+        if (body != null ? !body.equals(post.body) : post.body != null) return false;
+        if (author != null ? !author.equals(post.author) : post.author != null) return false;
+        if (publishedDate != null ? !publishedDate.equals(post.publishedDate) : post.publishedDate != null)
+            return false;
+        return category != null ? category.equals(post.category) : post.category == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = title != null ? title.hashCode() : 0;
+        result = 31 * result + (body != null ? body.hashCode() : 0);
+        result = 31 * result + (author != null ? author.hashCode() : 0);
+        result = 31 * result + (publishedDate != null ? publishedDate.hashCode() : 0);
+        result = 31 * result + (category != null ? category.hashCode() : 0);
+        return result;
     }
 }

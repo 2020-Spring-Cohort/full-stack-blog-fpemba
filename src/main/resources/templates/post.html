@@ -20,24 +20,25 @@
 </div>
 
 <div class="container__body">
+    <div class="container___body__info">
 
-    <h1 th:text="${post.title}">Default Title</h1>
-    <h2 th:text="${post.body}">Default Body</h2>
+        <h1 th:text="${post.title}">Default Title</h1>
+        <h2 th:text="${post.body}">Default Body</h2>
 
 
-    <div th:each="author : ${post.author}" th:remove="tag">
-        <p><a th:text="${author.name}" th:href="@{'/author/' + ${author.getName()}}">Author</a></p>
+        <div th:each="author : ${post.author}" th:remove="tag">
+            <p><a th:text="${author.name}" th:href="@{'/author/' + ${author.getName()}}">Author</a></p>
+        </div>
+
+        <div th:each="category : ${post.category}" th:remove="tag">
+            <p><a th:text="${category.name}" th:href="@{'/category/' + ${category.getName()}}">Category</a></p>
+        </div>
+
+        <div th:each="tag : ${post.tags}" th:remove="tag">
+            <p><a th:text="${tag.name}" th:href="@{'/tag/' + ${tag.getId()}}">Tags</a></p>
+        </div>
+
     </div>
-
-    <div th:each="category : ${post.category}" th:remove="tag">
-        <p><a th:text="${category.name}" th:href="@{'/category/' + ${category.getName()}}">Category</a></p>
-    </div>
-
-    <div th:each="tag : ${post.tags}" th:remove="tag">
-        <p><a th:text="${tag.name}" th:href="@{'/tag/' + ${tag.getId()}}">Tags</a></p>
-    </div>
-
-
 </div>
 
 <footer class="container__footer">

@@ -43,8 +43,8 @@ public class Author {
     @Override
     public String toString() {
         return "Author{" +
-                "name='" + name + '\'' +
-                ", posts=" + posts +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 '}';
     }
 

@@ -18,17 +18,19 @@
 </div>
 
 <div class="container__body">
+    <div class="container___body__info">
 
-    <div th:each="category : ${categories}" th:remove="tag">
-        <a th:text="${category.name}" th:href="'/category/single-category/' + ${category.name}"></a>
+        <div th:each="category : ${categories}" th:remove="tag">
+            <a th:text="${category.name}" th:href="'/category/single-category/' + ${category.name}"></a>
+        </div>
+
+        <form action="/category/add" method="post">
+
+            <input type="text" name="categoryName" placeholder="Category"/>
+            <button type="submit"> Add A Category</button>
+
+        </form>
     </div>
-
-    <form action="/category/add" method="post">
-
-        <input type="text" name="categoryName" placeholder="Category"/>
-        <button type="submit"> Add A Category</button>
-
-    </form>
 </div>
 
 <footer class="container__footer">

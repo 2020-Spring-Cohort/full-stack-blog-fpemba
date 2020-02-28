@@ -35,6 +35,11 @@ body, html {
 
 }
 
+.container___body__info {
+    display: flex;
+    flex-direction: column;
+}
+
 .container__footer {
     display: flex;
     justify-content: center;
