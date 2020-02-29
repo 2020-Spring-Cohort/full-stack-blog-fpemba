@@ -36,26 +36,26 @@ public class CategoryControllerTest {
     @Test
     public void shouldReturnViewWithOneCategory() {
         Category testCategory = new Category("water");
-        when(mockStorage.findCategoryByName("water")).thenReturn(testCategory);
+        when(mockStorage.findCategoryById(1)).thenReturn(testCategory);
 
-        underTest.displaySingleCategory("water", mockModel);
+        underTest.displayCategoryFromPostPage(1, mockModel);
 
-        verify(mockStorage).findCategoryByName("water");
+        verify(mockStorage).findCategoryById(1);
         verify(mockModel).addAttribute("category", testCategory);
     }
 
     @Test
     public void shouldReturnViewNamedCategoryWhenDisplaySingleCategoryIsCalled() {
-        String viewName = underTest.displaySingleCategory("water", mockModel);
+        String viewName = underTest.displayCategoryFromPostPage(1, mockModel);
         assertThat(viewName).isEqualTo("category");
     }
 
     @Test
     public void shouldGoToIndividualEndPoint() throws Exception {
         Category testCategory = new Category("water");
-        when(mockStorage.findCategoryByName("water")).thenReturn(testCategory);
+        when(mockStorage.findCategoryById(1)).thenReturn(testCategory);
 
-        mockMvc.perform(get("/category/single-category/water"))
+        mockMvc.perform(get("/category/1/"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("category"))
                 .andExpect(model().attributeExists("category"))

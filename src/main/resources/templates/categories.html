@@ -19,8 +19,10 @@
 <div class="container__body">
     <div class="container___body__info">
 
+        <h1>Categories</h1>
+
         <div th:each="category : ${categories}" th:remove="tag">
-            <a th:text="${category.name}" th:href="'/category/single-category/' + ${category.name}"></a>
+            <a th:text="${category.name}" th:href="'/category/' + ${category.id}"></a>
         </div>
 
         <form action="/category/add" method="post">

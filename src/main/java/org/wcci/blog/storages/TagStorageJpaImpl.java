@@ -29,7 +29,6 @@ public class TagStorageJpaImpl implements TagStorage {
 
     }
 
-
     @Override
     public Tag findTagByName(String name) {
 

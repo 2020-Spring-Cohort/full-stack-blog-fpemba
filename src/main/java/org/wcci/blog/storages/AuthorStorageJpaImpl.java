@@ -24,7 +24,6 @@ public class AuthorStorageJpaImpl implements AuthorStorage {
     public void store(Author author) {
 
         repository.save(author);
-
     }
 
     @Override

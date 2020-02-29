@@ -17,15 +17,8 @@ public class TagController {
     }
 
 
-    @GetMapping("/single-tag/{tagName}")
-    public String displaySingleTag(@PathVariable String tagName, Model model) {
-        Tag retrievedTag = tagStorage.findTagByName(tagName);
-        model.addAttribute("tag", retrievedTag);
-        return "tag";
-    }
-
     @GetMapping("/{tagId}")
-    public String displayTagFromPostPage(@PathVariable long tagId, Model model) {
+    public String displaySingleTag(@PathVariable long tagId, Model model) {
         Tag retrievedTag = tagStorage.findTagById(tagId);
         model.addAttribute("tag", retrievedTag);
         return "tag";

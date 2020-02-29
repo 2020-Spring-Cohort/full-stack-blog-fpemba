@@ -37,26 +37,26 @@ public class TagControllerTest {
     @Test
     public void shouldReturnViewWithOneTag() {
         Tag testTag = new Tag("fresh");
-        when(mockStorage.findTagByName("fresh")).thenReturn(testTag);
+        when(mockStorage.findTagById(1)).thenReturn(testTag);
 
-        underTest.displaySingleTag("fresh", mockModel);
+        underTest.displaySingleTag(1, mockModel);
 
-        verify(mockStorage).findTagByName("fresh");
+        verify(mockStorage).findTagById(1);
         verify(mockModel).addAttribute("tag", testTag);
     }
 
     @Test
     public void shouldReturnViewNamedTagWhenDisplaySingleTagIsCalled() {
-        String viewName = underTest.displaySingleTag("fresh", mockModel);
+        String viewName = underTest.displaySingleTag(1, mockModel);
         assertThat(viewName).isEqualTo("tag");
     }
 
     @Test
     public void shouldGoToIndividualEndPoint() throws Exception {
         Tag testTag = new Tag("fresh");
-        when(mockStorage.findTagByName("fresh")).thenReturn(testTag);
+        when(mockStorage.findTagById(1)).thenReturn(testTag);
 
-        mockMvc.perform(get("/tag/single-tag/fresh"))
+        mockMvc.perform(get("/tag/1/"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("tag"))
                 .andExpect(model().attributeExists("tag"))

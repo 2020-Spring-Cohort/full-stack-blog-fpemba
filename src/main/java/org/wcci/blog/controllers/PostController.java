@@ -35,13 +35,6 @@ public class PostController {
 
     }
 
-    @GetMapping("/single-posts/{title}")
-    public String displayOnePost(@PathVariable String title, Model model) {
-        Post retrievedPost = postStorage.findPostByTitle(title);
-        model.addAttribute("post", retrievedPost);
-        return "post";
-
-    }
 
     @PostMapping("add")
     public String AddPostForm(@RequestParam("author") String author, @RequestParam("category") String category, @RequestParam("postTitle") String postTitle, @RequestParam("postBody") String postBody) {

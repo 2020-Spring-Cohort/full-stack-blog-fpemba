@@ -17,11 +17,12 @@
 
 <div class="container__body">
     <div class="container___body__info">
+        <h1>Author</h1>
 
         <h1 th:text="${author.getName()}">Authors</h1> <br>
         <h3 th:each="post: ${author.getPosts()}">
             <a th:text="${post.getTitle()}" th:href="@{'/post/' + ${post.getId()}}">Post</a>
-        </h3> <br>
+        </h3>
 
 
     </div>
@@ -30,6 +31,7 @@
 <footer class="container__footer">
     <h3><a href="/">Home</a></h3>
 </footer>
+
 </body>
 
 </html>

@@ -51,14 +51,14 @@ public class PostControllerTest {
 
     @Test
     public void displayPostReturnsPostTemplate() {
-        String result = underTest.displaySinglePost(1L, model);
+        String result = underTest.displayPostFromAuthorPage((long) 1, model);
         assertThat(result).isEqualTo("post");
 
     }
 
     @Test
     public void displayPostInteractsWithDependenciesCorrectly() {
-        underTest.displaySinglePost(1L, model);
+        underTest.displayPostFromAuthorPage((long) 1, model);
         verify(mockPostStorage).findPostById(1L);
         verify(model).addAttribute("post", testPost);
 

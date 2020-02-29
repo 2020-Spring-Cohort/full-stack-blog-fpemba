@@ -16,12 +16,6 @@ public class CategoryController {
         this.categoryStorage = categoryStorage;
     }
 
-    @GetMapping("/single-category/{categoryName}")
-    public String displaySingleCategory(@PathVariable String categoryName, Model model) {
-        Category retrievedCategory = categoryStorage.findCategoryByName(categoryName);
-        model.addAttribute("category", retrievedCategory);
-        return "category";
-    }
 
     @GetMapping("/{categoryId}")
     public String displayCategoryFromPostPage(@PathVariable long categoryId, Model model) {

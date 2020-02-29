@@ -18,6 +18,8 @@
 <div class="container__body">
     <div class="container___body__info">
 
+        <h1>Category</h1>
+
         <h1 th:text="${category.getName()}">Categories</h1>
         <h3 th:each="post: ${category.getPosts()}">
             <a th:text="${post.getTitle()}" th:href="@{'/post/' + ${post.getId()}}">Post</a>
