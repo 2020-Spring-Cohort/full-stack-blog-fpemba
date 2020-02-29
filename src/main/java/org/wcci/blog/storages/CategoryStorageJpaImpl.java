@@ -32,4 +32,10 @@ public class CategoryStorageJpaImpl implements CategoryStorage {
 
         return repository.findByName(name).get();
     }
+
+    @Override
+    public Category findCategoryById(long id) {
+        return repository.findById(id).get();
+    }
+
 }

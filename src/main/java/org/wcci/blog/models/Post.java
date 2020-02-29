@@ -69,6 +69,16 @@ public class Post {
         return tags;
     }
 
+    public Author getAuthors() { //not sure
+
+        return author;
+    }
+
+    public Category getCategories() {
+
+        return category;
+    }
+
     public Author getAuthor() {
 
         return author;

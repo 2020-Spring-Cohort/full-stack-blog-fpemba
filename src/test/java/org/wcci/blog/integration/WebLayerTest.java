@@ -40,7 +40,7 @@ public class WebLayerTest {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(view().name("posts"))
-                .andExpect(model().attributeExists("post"));
+                .andExpect(model().attributeExists("posts"));
     }
 
     @Test

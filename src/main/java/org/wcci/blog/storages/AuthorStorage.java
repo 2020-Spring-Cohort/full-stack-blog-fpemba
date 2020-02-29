@@ -13,4 +13,5 @@ public interface AuthorStorage {
     Author findAuthorByName(String name);
 
 
+    Author findAuthorById(long authorId);
 }

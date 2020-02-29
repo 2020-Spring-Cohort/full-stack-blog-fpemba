@@ -37,7 +37,7 @@ public class Populator implements CommandLineRunner {
         categoryStorage.store(water);
 
 
-        Post waterPost1 = new Post(user, water, "Spring Water", "Spring Water is water derived from an underground.");
+        Post waterPost1 = new Post(user, water, "wow", "idek");
         Post waterPost2 = new Post(user, water, "Fiji Water", "From a sustainable ancient artesian aquifer in Fiji.");
         Post waterPost3 = new Post(user, water, "Ice Mountain", "Ice Mountain is a brand of bottled water from the Nestlé company.");
 

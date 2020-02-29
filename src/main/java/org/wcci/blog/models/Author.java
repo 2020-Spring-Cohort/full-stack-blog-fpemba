@@ -17,14 +17,13 @@ public class Author {
     @OneToMany(mappedBy = "author")
     private Collection<Post> posts;
 
+    public Author() {
+
+    }
 
     public Author(String name) {
 
         this.name = name;
-    }
-
-    public Author() {
-
     }
 
     public String getName() {

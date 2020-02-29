@@ -14,5 +14,7 @@ public interface PostStorage {
 //    Object findById(Long id);
 
     Post findPostById(long id);
+
+    Post findPostByTitle(String title);
 }
 

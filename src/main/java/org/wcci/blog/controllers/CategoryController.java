@@ -23,6 +23,13 @@ public class CategoryController {
         return "category";
     }
 
+    @GetMapping("/{categoryId}")
+    public String displayCategoryFromPostPage(@PathVariable long categoryId, Model model) {
+        Category retrievedCategory = categoryStorage.findCategoryById(categoryId);
+        model.addAttribute("category", retrievedCategory);
+        return "category";
+    }
+
     @PostMapping("add")
     public String AddCategoryForm(@RequestParam String categoryName) {
         categoryStorage.store(new Category(categoryName));
