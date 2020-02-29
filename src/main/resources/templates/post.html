@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" xmlns: th="http://www.thymeleaf.org/"
-      xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/" xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link rel="stylesheet" type="text/css" href="/css/layout.css">
     <meta charset="UTF-8">
-    <title th:text="${post.title}">Post</title>
+    <title th:text="${post.getTitle()}">Post</title>
 </head>
 
 <body class="container">
@@ -24,14 +23,15 @@
 
         <h1 th:text="${post.title}">Default Title</h1>
         <h2 th:text="${post.body}">Default Body</h2>
+        <h2 th:datetime="${post.publishedDate}">Default Published Date</h2>
 
 
-        <div th:each="author : ${post.author}" th:remove="tag">
-            <p><a th:text="${author.name}" th:href="@{'/author/' + ${author.getName()}}">Author</a></p>
+        <div th:each="author : ${post.authors}" th:remove="tag">
+            <p><a th:text="${author.name}" th:href="@{'/author/' + ${author.getId()}}">Author</a></p>
         </div>
 
-        <div th:each="category : ${post.category}" th:remove="tag">
-            <p><a th:text="${category.name}" th:href="@{'/category/' + ${category.getName()}}">Category</a></p>
+        <div th:each="category : ${post.categories}" th:remove="tag">
+            <p><a th:text="${category.name}" th:href="@{'/category/' + ${category.getId()}}">Tags</a></p>
         </div>
 
         <div th:each="tag : ${post.tags}" th:remove="tag">

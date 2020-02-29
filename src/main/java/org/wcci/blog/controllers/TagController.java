@@ -24,6 +24,13 @@ public class TagController {
         return "tag";
     }
 
+    @GetMapping("/{tagId}")
+    public String displayTagFromPostPage(@PathVariable long tagId, Model model) {
+        Tag retrievedTag = tagStorage.findTagById(tagId);
+        model.addAttribute("tag", retrievedTag);
+        return "tag";
+    }
+
     @PostMapping("add")
     public String AddTagForm(@RequestParam String tagName) {
         tagStorage.add(new Tag(tagName));

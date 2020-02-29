@@ -35,6 +35,13 @@ public class PostController {
 
     }
 
+    @GetMapping("/single-posts/{title}")
+    public String displayOnePost(@PathVariable String title, Model model) {
+        Post retrievedPost = postStorage.findPostByTitle(title);
+        model.addAttribute("post", retrievedPost);
+        return "post";
+
+    }
 
     @PostMapping("add")
     public String AddPostForm(@RequestParam("author") String author, @RequestParam("category") String category, @RequestParam("postTitle") String postTitle, @RequestParam("postBody") String postBody) {
@@ -44,12 +51,20 @@ public class PostController {
 
     @GetMapping("all-posts")
     public String viewAllPosts(Model model) {
-        model.addAttribute("post", postStorage.getAll());
-        model.addAttribute("author", authorStorage.getAll());
-        model.addAttribute("category", categoryStorage.getAll());
+        model.addAttribute("authors", authorStorage.getAll());
+        model.addAttribute("categories", categoryStorage.getAll());
         model.addAttribute("tags", tagStorage.getAll());
+        model.addAttribute("posts", postStorage.getAll());
         return "posts";
 
+    }
+
+    @GetMapping("/{id}")
+    public String displayPostFromAuthorPage(@PathVariable Long id, Model model) {
+        Post retrievedPost = postStorage.findPostById(id);
+        model.addAttribute("post", retrievedPost);
+        model.addAttribute("tags", tagStorage.getAll());
+        return "post";
     }
 
 

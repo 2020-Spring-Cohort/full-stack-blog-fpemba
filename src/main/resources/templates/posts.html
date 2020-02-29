@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns: th="http://www.thymeleaf.org/"
-      xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/" xmlns="http://www.w3.org/1999/xhtml">
 
 
 <head>
@@ -25,50 +24,46 @@
 
         <h1>Blog Posts</h1>
 
-        <label for="author">
-            <select id="author">
-                <option th:each="author: ${authors}"></option>
-            </select>
-        </label>
-
-
-        <label for="categories">
-            <select id="categories">
-                <option th:each="category : ${categories}" th:value="${category.id"
-                        th:text="${category.categoryName}"></option>
-            </select>
-</label>
-
-        <label for="tags">
-            <select id="tags">
-                <option th:each="tag : ${Tag}" th:value="${tag.id" th:text="${tag.tagName}"></option>
-            </select>
-</label>
-
-
         <div th:each="post : ${posts}" th:remove="tag">
-            <a th:text="${post.title}" th:href="'/post/single-post/' + ${post.id}"></a>
+
+            <a th:text="${post.title}" th:href="'/post/single-posts/' + ${post.title}"></a>
 
         </div>
 
-        <form method="post" action="/post/add">
+        <div class="container__body__selection">
 
-            <select name="category">
-                <option th:each="category : ${categories}" th:text="${category.getName()}"
-                        th:value="${category.getName()}">
-                    Category
-                </option>
-            </select>
+            <form method="post" action="/post/add">
 
-            <input type="text" name="postTitle" placeholder="Post Title"/> <br>
-            <input type="text" name="postBody" placeholder="Post"/> <br>
-
-            <input type="submit" value="Add A Post!"/>
+                <label for="author">
+                    <select id="author">
+                        <option th:each="author: ${authors}" th:value="${author.id}" th:text="${author.name}"></option>
+                    </select>
+                </label>
 
 
-        </form>
+                <label for="categories">
+                    <select id="categories">
+                        <option th:each="category : ${categories}" th:value="${category.id}"
+                                th:text="${category.name}"></option>
+                    </select>
+                </label>
+
+                <label for="tags">
+                    <select id="tags">
+                        <option th:each="tag : ${tags}" th:value="${tag.id}" th:text="${tag.name}"></option>
+                    </select>
+                </label>
+
+
+                <input type="text" name="postTitle" placeholder="Post Title"/> <br>
+                <input type="text" name="postBody" placeholder="Post"/> <br>
+
+                <input type="submit" value="Add A Post"/>
+
+
+            </form>
+        </div>
     </div>
-
 </div>
 
 <footer class="container__footer">

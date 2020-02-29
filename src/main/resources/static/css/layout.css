@@ -38,6 +38,13 @@ body, html {
 .container___body__info {
     display: flex;
     flex-direction: column;
+
+}
+
+.container__body__selection {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
 
 .container__footer {
