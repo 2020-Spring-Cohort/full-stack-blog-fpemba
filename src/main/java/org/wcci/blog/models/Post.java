@@ -49,6 +49,10 @@ public class Post {
     }
 
     public Post(String author, String category, String postTitle, String postBody) {
+        this.author = new Author(author);
+        this.category = new Category(category);
+        this.title = postTitle;
+        this.body = postBody;
 
     }
 
@@ -69,7 +73,7 @@ public class Post {
         return tags;
     }
 
-    public Author getAuthors() { //not sure
+    public Author getAuthors() {
 
         return author;
     }
@@ -83,6 +87,7 @@ public class Post {
 
         return author;
     }
+
 
     public String getPublishedDate() {
         return publishedDate;
@@ -118,3 +123,4 @@ public class Post {
         return result;
     }
 }
+

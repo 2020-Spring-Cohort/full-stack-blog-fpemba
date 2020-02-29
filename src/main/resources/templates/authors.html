@@ -18,8 +18,10 @@
 
 <div class="container__body">
     <div class="container___body__info">
+
+        <h1>Authors</h1>
         <div th:each="author : ${authors}" th:remove="tag">
-            <a th:text="${author.name}" th:href="'/author/single-author/' + ${author.name}"></a>
+            <a th:text="${author.name}" th:href="'/author/' + ${author.id}"></a>
         </div>
 
         <form action="/author/add" method="post">

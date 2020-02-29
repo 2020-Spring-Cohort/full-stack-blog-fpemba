@@ -18,8 +18,10 @@
 
 <div class="container__body">
     <div class="container___body__info">
+
+        <h1>Tags</h1>
         <div th:each="tag : ${tags}" th:remove="tag">
-            <a th:text="${tag.name}" th:href="'/tag/single-tag/' + ${tag.name}"></a>
+            <a th:text="${tag.name}" th:href="'/tag//' + ${tag.id}"></a>
         </div>
 
         <form action="/tag/add" method="post">
@@ -38,3 +40,4 @@
 </body>
 
 </html>
+

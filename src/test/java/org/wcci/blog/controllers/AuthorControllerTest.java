@@ -35,31 +35,31 @@ public class AuthorControllerTest {
 
     @Test
     public void shouldReturnViewWithOneAuthor() {
-        Author testAuthor = new Author("user");
-        when(mockStorage.findAuthorByName("user")).thenReturn(testAuthor);
+        Author testAuthor = new Author("authors");
+        when(mockStorage.findAuthorById(1)).thenReturn(testAuthor);
 
-        underTest.displaySingleAuthor("user", mockModel);
+        underTest.displayAuthorFromPostPage(1, mockModel);
 
-        verify(mockStorage).findAuthorByName("user");
-        verify(mockModel).addAttribute("author", testAuthor);
+        verify(mockStorage).findAuthorById(1);
+        verify(mockModel).addAttribute("authors", testAuthor);
     }
 
     @Test
     public void shouldReturnViewNamedAuthorWhenDisplaySingleAuthorIsCalled() {
-        String viewName = underTest.displaySingleAuthor("user", mockModel);
+        String viewName = underTest.displayAuthorFromPostPage(1, mockModel);
         assertThat(viewName).isEqualTo("author");
     }
 
     @Test
     public void shouldGoToIndividualEndPoint() throws Exception {
-        Author testAuthor = new Author("user");
-        when(mockStorage.findAuthorByName("user")).thenReturn(testAuthor);
+        Author testAuthor = new Author("authors");
+        when(mockStorage.findAuthorById(1)).thenReturn(testAuthor);
 
-        mockMvc.perform(get("/author/single-author/user"))
+        mockMvc.perform(get("/author/1/"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("author"))
-                .andExpect(model().attributeExists("author"))
-                .andExpect(model().attribute("author", testAuthor));
+                .andExpect(model().attributeExists("authors"))
+                .andExpect(model().attribute("authors", testAuthor));
     }
 
     @Test

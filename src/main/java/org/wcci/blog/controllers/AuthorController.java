@@ -18,13 +18,6 @@ public class AuthorController {
         this.authorStorage = authorStorage;
     }
 
-    @GetMapping("/single-author/{authorName}")
-    public String displaySingleAuthor(@PathVariable String authorName, Model model) {
-        Author retrievedAuthor = authorStorage.findAuthorByName(authorName);
-        model.addAttribute("author", retrievedAuthor);
-        return "author";
-    }
-
     @GetMapping("/{authorId}")
     public String displayAuthorFromPostPage(@PathVariable long authorId, Model model) {
         Author retrievedAuthor = authorStorage.findAuthorById(authorId);
