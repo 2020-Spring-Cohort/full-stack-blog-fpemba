@@ -41,7 +41,7 @@ public class AuthorControllerTest {
         underTest.displayAuthorFromPostPage(1, mockModel);
 
         verify(mockStorage).findAuthorById(1);
-        verify(mockModel).addAttribute("authors", testAuthor);
+        verify(mockModel).addAttribute("author", testAuthor);
     }
 
     @Test
@@ -58,8 +58,8 @@ public class AuthorControllerTest {
         mockMvc.perform(get("/author/1/"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("author"))
-                .andExpect(model().attributeExists("authors"))
-                .andExpect(model().attribute("authors", testAuthor));
+                .andExpect(model().attributeExists("author"))
+                .andExpect(model().attribute("author", testAuthor));
     }
 
     @Test

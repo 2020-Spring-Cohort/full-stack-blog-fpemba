@@ -1,27 +1,25 @@
-body {
-    /*background-image: url("https://skyandtelescope.org/wp-content/uploads/Volcanic-twilight-Thom-Peck-Sept-1_2019-Calif.jpg");*/
-    color: lightsalmon;
-}
+
 
 .container {
-    color: blueviolet;
+    background-color: cadetblue;
 
 }
 
-.container__nav {
 
-    color: brown;
-
+.container__nav a:hover {
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .container__body {
-
-    color: cadetblue;
-
+    background-color: darkcyan;
 }
 
-.container__footer {
+h1 {
+    color: #f0f1f9;
+}
 
-    color: cornflowerblue;
+
+.container__footer {
+    background-color: cadetblue;
 
 }

@@ -13,9 +13,9 @@
 <body class="container">
 
 <div class="container__nav">
-    <a href="/author/all-authors">Add Authors</a>
-    <a href="/category/all-categories">Add Categories</a>
-    <a href="/tag/all-tags">Add Tags</a>
+    <a href="/author/all-authors">Authors</a>
+    <a href="/category/all-categories">Categories</a>
+    <a href="/tag/all-tags">Tags</a>
 </div>
 
 <div class="container__body">
@@ -24,12 +24,6 @@
     <div class="container___body__info">
 
         <h1>Blog Posts</h1>
-
-        <div th:each="post : ${posts}" th:remove="tag">
-
-            <a th:text="${post.title}" th:href="'/post/single-post/' + ${post.id}"></a>
-
-        </div>
 
         <div class="container__body__selection">
 
@@ -53,10 +47,9 @@
                     <select id="tags" name="tag">
                         <option th:each="tag : ${tags}" th:value="${tag.id}" th:text="${tag.name}"></option>
                     </select>
-                </label>
+                </label> <br>
 
-                <!--                <input type="text" name="author">-->
-                <!--                <input type="text" name="category">-->
+
                 <input type="text" name="postTitle" placeholder="Post Title"/> <br>
                 <input type="text" name="postBody" placeholder="Post"/> <br>
 
@@ -65,6 +58,14 @@
 
             </form>
         </div>
+
+        <div th:each="post : ${posts}" th:remove="tag">
+
+            <a th:text="${post.title}" th:href="'/post/single-post/' + ${post.id}"></a>
+
+        </div>
+
+
     </div>
 </div>
 
