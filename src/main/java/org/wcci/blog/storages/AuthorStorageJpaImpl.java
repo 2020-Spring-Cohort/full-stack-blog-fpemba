@@ -17,6 +17,7 @@ public class AuthorStorageJpaImpl implements AuthorStorage {
 
     @Override
     public Collection<Author> getAll() {
+
         return (Collection<Author>) repository.findAll();
     }
 
@@ -28,11 +29,13 @@ public class AuthorStorageJpaImpl implements AuthorStorage {
 
     @Override
     public Author findAuthorByName(String name) {
+
         return repository.findByName(name).get();
     }
 
     @Override
     public Author findAuthorById(long id) {
+
         return repository.findById(id).get();
     }
 }

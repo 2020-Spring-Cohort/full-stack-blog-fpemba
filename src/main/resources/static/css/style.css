@@ -6,7 +6,8 @@
 
 .container__nav {
     flex: 0 1 40px;
-    color: #f0f1f9;
+    background-image: linear-gradient(to left bottom, #256766, #c7c6b2, #86d8d4, #767676);
+
 }
 
 .container__nav a:hover {
@@ -29,8 +30,8 @@
 }
 
 .container__footer {
-    background-image: linear-gradient(to left bottom, #4ebaca, #5a7675, #80522c);
-
+    /*background-image: linear-gradient(to left bottom, #4ebaca, #5a7675, #80522c);*/
+    background-image: linear-gradient(to left bottom, #256766, #c7c6b2, #86d8d4, #767676);
 }
 
 .container__footer a:hover {
