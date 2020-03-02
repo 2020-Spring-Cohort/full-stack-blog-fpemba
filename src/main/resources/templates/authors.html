@@ -21,12 +21,15 @@
 
         <h1>Authors</h1>
 
+
         <form action="/author/add" method="post">
 
-            <input type="text" name="authorName" placeholder="name"/>
-            <button type="submit"> Add Author</button>
-
+            <div class="container___input">
+                <input type="text" name="authorName" placeholder="name"/>
+                <button type="submit"> Add Author</button>
+            </div>
         </form>
+
 
         <div th:each="author : ${authors}" th:remove="tag">
             <a th:text="${author.name}" th:href="'/author/' + ${author.id}"></a>

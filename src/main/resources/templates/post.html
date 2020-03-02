@@ -27,11 +27,11 @@
 
 
             <div th:each="author : ${post.getAuthors()}" th:remove="tag">
-                <p><a th:text="${author.name}" th:href="@{'/author/' + ${author.name}}">Author</a></p>
+                <a th:text="${author.name}" th:href="@{'/author/' + ${author.id}}">Author</a></p>
             </div>
 
             <div th:each="category : ${post.categories}" th:remove="tag">
-                <p><a th:text="${category.name}" th:href="@{'/category/' + ${category.name}}">Category</a></p>
+                <p><a th:text="${category.name}" th:href="@{'/category/' + ${category.id}}">Category</a></p>
             </div>
 
             <div th:each="tag : ${post.tags}" th:remove="tag">
