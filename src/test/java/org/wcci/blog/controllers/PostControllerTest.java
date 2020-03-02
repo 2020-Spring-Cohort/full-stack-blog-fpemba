@@ -24,26 +24,21 @@ public class PostControllerTest {
 
     private PostController underTest;
     private Model model;
-    private CategoryStorage mockCategoryStorage;
-    private TagStorage mockTagStorage;
-    private AuthorStorage mockAuthorStorage;
     private PostStorage mockPostStorage;
     private Post testPost;
     private MockMvc mockMvc;
-    private Author testAuthor;
-    private Category testCategory;
 
     @BeforeEach
     void setUp() {
         mockPostStorage = mock(PostStorage.class);
-        mockCategoryStorage = mock(CategoryStorage.class);
-        mockTagStorage = mock(TagStorage.class);
-        mockAuthorStorage = mock(AuthorStorage.class);
+        CategoryStorage mockCategoryStorage = mock(CategoryStorage.class);
+        TagStorage mockTagStorage = mock(TagStorage.class);
+        AuthorStorage mockAuthorStorage = mock(AuthorStorage.class);
         underTest = new PostController(mockPostStorage, mockAuthorStorage, mockCategoryStorage, mockTagStorage);
         mockMvc = MockMvcBuilders.standaloneSetup(underTest).build();
         model = mock(Model.class);
-        testAuthor = new Author("user");
-        testCategory = new Category("water");
+        Author testAuthor = new Author("user");
+        Category testCategory = new Category("water");
         testPost = new Post("test", "test");
         when(mockCategoryStorage.findCategoryByName("water")).thenReturn(testCategory);
         when(mockPostStorage.findPostById(1L)).thenReturn(testPost);
